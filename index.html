@@ -13,7 +13,7 @@
 
     body {
       font-family: 'Courier New', monospace;
-      background: linear-gradient(180deg, #0a0a0a 0%, #001100 50%, #003300 100%);
+      background: linear-gradient(180deg, #0a0a0a 0%, #110000 50%, #330000 100%);
       color: #e0e0e0;
       line-height: 1.6;
       min-height: 100vh;
@@ -39,8 +39,8 @@
         0deg,
         transparent 0px,
         transparent 1px,
-        rgba(57, 255, 20, 0.03) 1px,
-        rgba(57, 255, 20, 0.03) 3px
+        rgba(255, 57, 20, 0.03) 1px,
+        rgba(255, 57, 20, 0.03) 3px
       );
       animation: scanline 3s linear infinite;
       mix-blend-mode: soft-light;
@@ -63,17 +63,17 @@
     header {
       text-align: center;
       margin-bottom: 3em;
-      padding-bottom: 2em;
-      border-bottom: 1px solid #00aa00;
+      padding-bottom: 1em;
+      border-bottom: 1px solid #aa0000;
     }
 
     h1 {
-      color: #39ff14;
-      text-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14;
+      color: #ff1439;
+      text-shadow: 0 0 15px #ff1439, 0 0 30px #ff1439;
       font-size: 2.2em;
       position: relative;
       animation: glitch 2s ease-in-out infinite;
-      margin-bottom: 1em;
+      margin-bottom: 0.4em;
     }
 
     h1::before {
@@ -118,23 +118,50 @@
       }
       10% {
         transform: translateX(-2px) skewX(3deg);
-        text-shadow: 0.05em 0 #ff0000, -0.05em 0 #00ff00;
+        text-shadow: 0.05em 0 #ff0000, -0.05em 0 #ffaa00;
       }
       20% {
         transform: translateX(3px) skewX(-2deg);
-        text-shadow: -0.03em 0 #00ffff, 0.04em 0 #ff00ff;
+        text-shadow: -0.03em 0 #ff6600, 0.04em 0 #cc6600;
       }
       30% {
         transform: translateX(-1px) skewX(1deg);
-        text-shadow: 0.02em 0 #ff0000, -0.03em 0 #39ff14;
+        text-shadow: 0.02em 0 #ff0000, -0.03em 0 #ff1439;
       }
       40% {
         transform: translateX(2px) skewX(-3deg);
-        text-shadow: -0.05em 0 #00ff00, 0.03em 0 #ff00ff;
+        text-shadow: -0.05em 0 #ffaa00, 0.03em 0 #cc6600;
       }
       50% {
         transform: translateX(0) skewX(0);
         text-shadow: 0 0 10px currentColor;
+      }
+    }
+
+    @keyframes mild-glitch {
+      0%, 60%, 100% {
+        transform: translateX(0) skewX(0);
+        text-shadow: 0 0 5px currentColor;
+      }
+      10% {
+        transform: translateX(-1px) skewX(1.5deg);
+        text-shadow: 0.03em 0 #ff0000, -0.03em 0 #ffaa00;
+      }
+      20% {
+        transform: translateX(1.5px) skewX(-1deg);
+        text-shadow: -0.02em 0 #ff6600, 0.03em 0 #cc6600;
+      }
+      30% {
+        transform: translateX(-0.5px) skewX(0.5deg);
+        text-shadow: 0.01em 0 #ff0000, -0.02em 0 #ff1439;
+      }
+      40% {
+        transform: translateX(1px) skewX(-1.5deg);
+        text-shadow: -0.03em 0 #ffaa00, 0.02em 0 #cc6600;
+      }
+      50% {
+        transform: translateX(0) skewX(0);
+        text-shadow: 0 0 5px currentColor;
       }
     }
 
@@ -144,12 +171,12 @@
     }
 
     section {
-      background: rgba(0, 17, 0, 0.3);
-      border-left: 4px solid #00aa00;
+      background: rgba(17, 0, 0, 0.3);
+      border-left: 4px solid #aa0000;
       padding: 1.5em;
       border-radius: 0 8px 8px 0;
       position: relative;
-      box-shadow: inset 0 0 20px rgba(0, 170, 0, 0.1);
+      box-shadow: inset 0 0 20px rgba(170, 0, 0, 0.1);
       opacity: 0;
       transform: translateY(25px);
       animation: fadeInUp 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
@@ -181,13 +208,13 @@
       top: 0;
       bottom: 0;
       width: 4px;
-      background: linear-gradient(to bottom, #39ff14, #00aa00);
-      box-shadow: 0 0 10px #39ff14;
+      background: linear-gradient(to bottom, #ff1439, #aa0000);
+      box-shadow: 0 0 10px #ff1439;
     }
 
     h2 {
-      color: #39ff14;
-      text-shadow: 0 0 10px #39ff14;
+      color: #ff1439;
+      text-shadow: 0 0 10px #ff1439;
       font-size: 1.8em;
       margin-bottom: 1em;
       position: relative;
@@ -221,6 +248,41 @@
       box-shadow: 0 0 4px #00aa00;
     }
 
+    .subtitle {
+      font-style: italic;
+      color: #cc9900;
+      text-shadow: 0 0 8px #ff1439;
+      font-size: 1.0em;
+      margin-top: 0.3em;
+      margin-bottom: 0.3em;
+      text-align: center;
+      position: relative;
+      animation: mild-glitch 4s ease-in-out infinite 1s;
+      font-family: inherit;
+    }
+
+    .subtitle::before,
+    .subtitle::after {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      width: 1px;
+      height: 0;
+      background: linear-gradient(to top, transparent, #39ff14);
+      transform: translateX(-50%);
+    }
+
+    .subtitle::before {
+      animation: drip 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 2s;
+      left: 30%;
+    }
+
+    .subtitle::after {
+      animation: drip 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 3s;
+      left: 70%;
+    }
+    
     p {
       margin-bottom: 1.2em;
       text-shadow: 0 0 3px rgba(224, 224, 224, 0.5);
@@ -229,23 +291,23 @@
 
     footer {
       text-align: center;
-      margin-top: 4em;
+      margin-top: 2em;
       padding-top: 2em;
-      border-top: 1px solid #00aa00;
+      border-top: 1px solid #aa0000;
       color: #b0b0b0;
       font-size: 0.95em;
     }
 
     footer a {
-      color: #39ff14 !important;
+      color: #ff1439 !important;
       text-decoration: none;
-      text-shadow: 0 0 5px #39ff14;
+      text-shadow: 0 0 5px #ff1439;
       transition: all 0.3s ease;
       position: relative;
     }
 
     footer a:hover {
-      text-shadow: 0 0 15px #39ff14, 0 0 25px #39ff14;
+      text-shadow: 0 0 15px #ff1439, 0 0 25px #ff1439;
       animation: linkGlitch 0.15s linear infinite alternate;
       transform: scale(1.02);
     }
@@ -304,12 +366,15 @@
 <body>
   <div class="container">
     <header>
-      <h1>Heartphyre: A Study in Coercive Control and Muriatic Misery</h1>
+      <h1>Heartphyre: A Study in Muriatic Misery</h1>
+      <blockquote class="subtitle">
+        "You can't be disabled and hope to have any kind of easy life."
+      </blockquote>
     </header>
     <main>
       <section id="control">
         <h2>Coercive Control</h2>
-        <p>Finn presented himself as a visionary leader, but the reality suggested a pattern of maintaining control by keeping his environment in a state of constant, convenient crisis. He appeared to have little interest in solving foundational problems, such as high insurance costs or broken appliances, as a functional home would have reduced the residents' dependence on his "leadership." Even the mechanical failures surrounding him felt suspiciously timed; for instance, a simple keyfob issue—which can be induced in seconds—was used as a justification to seize a partner's superior vehicle. By consistently rejecting efficient systems and professional expertise, he ensured that his peers stayed exhausted and financially drained, suggesting a preference for a broken kingdom over a successful partnership.</p>
+        <p>Finn presented himself as a visionary leader, but the reality suggested a pattern of maintaining control by keeping his environment in a state of constant, convenient crisis. He appeared to have little interest in solving foundational problems, such as broken appliances and accessibility issues, as a functional home would have reduced the residents' dependence on his "leadership." Even the mechanical failures surrounding him felt suspiciously timed; for instance, the brand new battery I installed in the keyfob had its polarity covertly reversed, creating a justification to seize a partner's superior vehicle. By consistently rejecting efficient systems, professional expertise, and bona fide enthusiasm, he ensured that his peers stayed exhausted and financially drained, suggesting a preference for a broken kingdom over a successful partnership.</p>
       </section>
       <section id="misery">
         <h2>Muriatic Misery</h2>
@@ -317,11 +382,11 @@
       </section>
       <section id="exploitation">
         <h2>Systemic Exploitation</h2>
-        <p>The most disturbing reality of this systemic exploitation is that it is often perfectly legal and hidden behind the language of "community." Law enforcement and society are trained to look for physical violence or discrete theft, but they often miss the "professional" who uses the mask of a visionary to facilitate a parasitic lifestyle. Heartphyre was a predatory architecture where people were viewed as extractable assets and expertise was treated as a threat to be neutralized. Ultimately, the only way to stop the corrosion is to speak candidly about the manipulation and mistreatment, exposing the "Visionary" for the extractor he has always been.</p>
+        <p>The most disturbing reality of this systemic exploitation is that it is often perfectly legal and hidden behind the language of "community." Law enforcement and society are trained to look for physical violence or discrete theft, but they often miss the "benevolent leader" who uses the mask of a visionary to facilitate a parasitic lifestyle. Heartphyre was a predatory architecture where people were viewed as extractable assets and expertise was treated as a threat to be neutralized. Ultimately, the only way to stop the corrosion is to speak candidly about the manipulation and mistreatment, exposing the visionary for the extractor he has always been.</p>
       </section>
     </main>
     <footer>
-      <p><a href="https://open.spotify.com/episode/6cMe6Rkv8SgjnXzhdW9Luu">End coercive control.</a></p>
+      <p>End coercive control. <iframe src="https://open.spotify.com/embed/episode/6cMe6Rkv8SgjnXzhdW9Luu" width="400" height="120" style="border-radius:12px;border:0;display:block;margin:10px auto;" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></p>
     </footer>
   </div>
 </body>

@@ -105,3 +105,121 @@ graph TD
 - [ ] Update [`plans/heartphyre-plan.md`](plans/heartphyre-plan.md) with new animation details including glitch/scanline specs and optional updated Mermaid diagram
 - [ ] Review plan with user and refine todo list
 - [ ] Switch to code mode for implementation
+
+## Subtitle Addition: Quote Integration
+
+### Goals
+- Add user-specified quote as subtitle: "You can't be disabled and hope to have any kind of easy life."
+- Position: Immediately under h1 in header for prominence.
+- Structure: Use `<blockquote>` or `<p class="subtitle">` for semantic emphasis.
+- Styling: Match theme – acid green glow, subtle glitch/drip, italicized monospace, centered, responsive sizing.
+- Preserve single-file purity (no external assets).
+
+### Proposed HTML (in [`index.html`](index.html))
+```
+<header>
+  <h1>Heartphyre: A Study in Coercive Control and Muriatic Misery</h1>
+  <blockquote class="subtitle">
+    "You can't be disabled and hope to have any kind of easy life."
+  </blockquote>
+</header>
+```
+
+### Proposed CSS Additions
+```
+.subtitle {
+  font-style: italic;
+  color: #00aa00;
+  text-shadow: 0 0 8px #39ff14;
+  font-size: 1.2em;
+  margin-top: 0.5em;
+  text-align: center;
+  position: relative;
+  animation: glitch 3s ease-in-out infinite 1s;
+}
+
+.subtitle::before,
+.subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 1px;
+  height: 0;
+  background: linear-gradient(to top, transparent, #39ff14);
+  transform: translateX(-50%);
+}
+
+.subtitle::before {
+  animation: drip 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 2s;
+  left: 30%;
+}
+
+.subtitle::after {
+  animation: drip 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 3s;
+  left: 70%;
+}
+```
+
+### Mermaid Update Suggestion
+```
+graph TD
+  A[html head] --> B[body]
+  B --> C[header h1 + subtitle quote + drips]
+  %% ... rest unchanged
+```
+
+**Impact:** Quote amplifies theme of systemic barriers/exploitation, styled to corrode into view.
+
+## Text Content Improvements
+
+### Goals
+- Tighten wording for conciseness (reduce word count ~20-30% per section)
+- Amplify impact with punchier sentences, active voice
+- Strengthen muriatic acid/corrosion metaphors (etch, dissolve, corrode, ruins, ashes)
+- Improve flow and rhetorical power while preserving original meaning
+- Maintain single <p> per section for simplicity
+
+### Section 1: Coercive Control {#control}
+
+**Current (from [`index.html`](index.html:312)):**
+```
+Finn presented himself as a visionary leader, but the reality suggested a pattern of maintaining control by keeping his environment in a state of constant, convenient crisis. He appeared to have little interest in solving foundational problems, such as high insurance costs or broken appliances, as a functional home would have reduced the residents' dependence on his "leadership." Even the mechanical failures surrounding him felt suspiciously timed; for instance, a simple keyfob issue—which can be induced in seconds—was used as a justification to seize a partner's superior vehicle. By consistently rejecting efficient systems and professional expertise, he ensured that his peers stayed exhausted and financially drained, suggesting a preference for a broken kingdom over a successful partnership.
+```
+
+**Proposed:**
+```
+Finn masqueraded as a visionary leader, orchestrating constant crises to grip control. He ignored basics like insurance or appliances—lest functionality erode his "leadership." Suspicious breakdowns, like a seconds-to-sabotage keyfob, justified seizing partners' vehicles. Spurning efficiency and experts, he kept peers exhausted and broke, ruling corrosive ruins over equal partnership.
+```
+
+### Section 2: Muriatic Misery {#misery}
+
+**Current (from [`index.html`](index.html:316)):**
+```
+The most harrowing evidence of this power dynamic was the use of coercive meetings—sessions where residents were forced to remain in a pressure chamber of thick, suffocating tension. To force someone to remain in a room for an hour while they are in visible distress, trapped in a "discussion" about essentially nothing, is not leadership; it is a calculated act of psychological exhaustion. While common theft is a simple transfer of value, this environment was negative-sum, meaning the total destruction of the group's well-being far outweighed any petty benefit he gained. This is the essence of Muriatic Misery: a corrosive atmosphere that etches away at a person's resources, confidence, and sanity until only the rawest nerves remain. Like the acid it is named for, this environment didn't just cause sadness; it dissolved the very tools and safety nets residents needed to survive. He essentially burned down the entire structure to provide a momentary warmth for himself, leaving others to navigate the wreckage and the legal fallout of a failure that served only his own interests.
+```
+
+**Proposed:**
+```
+Coercive meetings trapped residents in suffocating tension chambers, etching psyches hour by hour—not leadership, but calculated exhaustion. Theft shifts value; this was pure corrosion, obliterating well-being for petty gains. Muriatic Misery: acid fog dissolving resources, confidence, sanity to raw nerves. It stripped survival nets, not just sadness. He torched the house for fleeting embers, stranding others in ashes and legal fallout.
+```
+
+### Section 3: Systemic Exploitation {#exploitation}
+
+**Current (from [`index.html`](index.html:320)):**
+```
+The most disturbing reality of this systemic exploitation is that it is often perfectly legal and hidden behind the language of "community." Law enforcement and society are trained to look for physical violence or discrete theft, but they often miss the "professional" who uses the mask of a visionary to facilitate a parasitic lifestyle. Heartphyre was a predatory architecture where people were viewed as extractable assets and expertise was treated as a threat to be neutralized. Ultimately, the only way to stop the corrosion is to speak candidly about the manipulation and mistreatment, exposing the visionary for the extractor he has always been.
+```
+
+**Proposed:**
+```
+This predation hides legally behind "community" veils. Society hunts bruises and thefts, blind to "visionaries" leaching lives. Heartphyre preyed on humans as assets, expertise as threats. Stop the etch: voice the abuse, unmask the extractor.
+```
+
+**Footer Suggestion (Current: [`index.html`](index.html:324)):**
+- Current: `<p><a href="https://open.spotify.com/episode/6cMe6Rkv8SgjnXzhdW9Luu">End coercive control.</a></p>`
+- Proposed: Keep as-is or tweak to "End the corrosion. [link]"
+
+**Word Count Reduction:** ~25% average, sharper impact, consistent acid lexicon (etch, corrode, dissolve, ruins, ashes, fog).
+
+**Status:** Discarded per user preference. Focus shifted to adding specific quote as subtitle.
